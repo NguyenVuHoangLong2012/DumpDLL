@@ -30,11 +30,11 @@ def collectDLLInfo(DLL_File):
 				Va = ImageBase + Exp.address
 			Forward = Exp.forwarder.decode(errors="ignore") if Exp.forwarder else None
 			Result.append({
-				"name": Name or "No name",
+				"name": Name or None,
 				"ordinal": Ordinal,
-				"rva": hex(Rva) if Rva is not None else "N/A",
-				"va": hex(Va) if Va is not None else "N/A",
-				"forward": Forward or "No"
+				"rva": hex(Rva) if Rva is not None else None,
+				"va": hex(Va) if Va is not None else None,
+				"forward": Forward or None
 			})
 		PE.close()
 		return Result
@@ -44,11 +44,15 @@ def collectDLLInfo(DLL_File):
 		sys.exit(3)
 def printDLLInfo(Datas):
 	for Data in Datas:
-		print("Name:", Data.get("name", None))
+		Name = Data.get("name")
+		print("Name:", Name if Name else "No name")
 		print("Ordinal:", Data.get("ordinal", "unknown"))
-		print("Rva:", Data.get("rva", "unknown"))
-		print("Va:", Data.get("va", "unknown"))
-		print("Forward:", Data.get("forward"))
+		Rva = Data.get("rva")
+		print("Rva:", Rva if Rva else "N/A")
+		Va = Data.get("va")
+		print("Va:", Va if Va else "N/A")
+		Forward = Data.get("forward")
+		print("Forward:", Forward if Forward else "No")
 		print("")
 def printJsonDLLInfo(Data):
 	print(json.dumps(Data, indent=2))
@@ -64,7 +68,7 @@ def showDLLInfo(DLL_File, Mode="normal"):
 		printDLLInfo(Data)
 	sys.exit(0)
 def getVersion():
-	return "1.0"
+	return "1.1"
 def showVersion():
 	print(f"DumpDLL version {getVersion()}")
 def showHelp():
