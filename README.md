@@ -4,6 +4,7 @@ Version: 1.1
 Platform: Windows  
 Simple PE Export Viewer
 ## Usage:
+Usage:  
 dumpdll <dll_file> [options]  
 ### Options:
 - --json                Output result in JSON format.  
@@ -19,7 +20,7 @@ dumpdll <dll_file> [options]
 ## Examples:
 - dumpdll user32.dll  
 - dumpdll kernel32.dll --table  
-dumpdll ntdll.dll --json  
+- dumpdll ntdll.dll --json  
 ## Download:
 Download and read release note at:
 https://github.com/NguyenVuHoangLong2012/DumpDLL/releases
