@@ -1,6 +1,6 @@
 # DumpDLL
 Name: DumpDLL  
-Version: 1.0  
+Version: 1.1  
 Platform: Windows  
 Simple PE Export Viewer
 ## Usage:
